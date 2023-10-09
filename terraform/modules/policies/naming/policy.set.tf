@@ -4,8 +4,8 @@ locals {
 }
 resource "azurerm_policy_definition" "resourse_naming" {
   for_each            = { for idx, val in local.merged_policy_rules : idx => val }
-  name                = "LI Name Policy for ${each.value.policy_name}"
-  display_name        = "LI Name Policy for ${each.value.policy_name}"
+  name                = "Naming Policy for ${each.value.policy_name}"
+  display_name        = "Naming Policy for ${each.value.policy_name}"
   policy_type         = "Custom"
   mode                = "All"
   management_group_id = var.management_group_id
@@ -18,8 +18,8 @@ data "azurerm_management_group" "mg" {
 
 resource "azurerm_policy_set_definition" "resourse_naming" {
 
-  name                = "LINamePolicyinitiativeGeneral"
-  display_name        = "LI Name Policy initiative General"
+  name                = "NamePolicyinitiativeGeneral"
+  display_name        = "Naming Policy initiative General"
   policy_type         = "Custom"
   management_group_id = var.management_group_id
 
