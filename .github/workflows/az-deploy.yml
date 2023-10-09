@@ -39,12 +39,8 @@ jobs:
         with:
           terraform_wrapper: false
           
-      - name: Set up Azure CLI
-        uses: azure/setup-azure-cli@v3
-
       - name: Login to Azure
         run: az login --service-principal --client-id ${{ secrets.AZURE_CLIENT_ID }} --client-secret ${{ secrets.AZURE_CLIENT_SECRET }} --tenant-id ${{ secrets.AZURE_TENANT_ID }}
-
       
         
       - name: Initialize Terraform
