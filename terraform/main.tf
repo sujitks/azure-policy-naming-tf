@@ -18,6 +18,7 @@ provider "azurerm" {
 
 
 module "policy_naming" {
-  source   = "./modules/policies/naming"
-  location = "uksouth"
+  source              = "./modules/policies/naming"
+  management_group_id = var.management_group_id
+  location            = "uksouth"
 }
