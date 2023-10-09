@@ -12,6 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+  
 env:
   ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
   ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
@@ -39,10 +44,7 @@ jobs:
         with:
           terraform_wrapper: false
           
-      - name: Login to Azure
-        run: az login --service-principal --client-id ${{ secrets.AZURE_CLIENT_ID }} --client-secret ${{ secrets.AZURE_CLIENT_SECRET }} --tenant-id ${{ secrets.AZURE_TENANT_ID }}
-      
-        
+     
       - name: Initialize Terraform
         run: terraform init
 
