@@ -44,14 +44,16 @@ jobs:
         with:
           terraform_wrapper: false
 
-      - change directory
-        run: cd terraform
-     
+    
       - name: Initialize Terraform
-        run: terraform init
+        run: |
+          cd ./terraform
+          terraform init
 
       - name: Plan Terraform changes
-        run: terraform plan
+        run: |
+          cd ./terraform
+          terraform plan
 
       - name: Apply Terraform changes
         run: terraform apply
